@@ -1,5 +1,6 @@
 #coding:utf-8
 import re
+import sys
 
 class Analyse:
 	def transform(self,s,d):
@@ -90,7 +91,7 @@ class Analyse:
 					result.write(">" + str(word_dic[word]) + "\n")
 		else:
 			for word in word_dic:
-				if word_dic[word] < range_max and word_dic[word] >= range_min:
+				if word_dic[word] < int(range_max) and word_dic[word] >= range_min:
 					write_num += 1
 					result.write(word + "<")
 					for space in xrange(40 - len(word)):
@@ -108,11 +109,20 @@ class Analyse:
 		print u"黑名单单词数:",black_num
 		print u"去重后在黑名单中的单词数:",outside_num
 		print u"去重后不在黑名单的单词数:",set_num
-		print u"写入文件的单词数:",write_num
+		print u"符合要求词频的单词数:",write_num
 
 def main():
 	a = Analyse()
-	a.start("river.txt","analyse_result.txt","dic.txt",2,10)
+	if len(sys.argv) > 4:
+		a.start(sys.argv[1],sys.argv[2],"black_word.txt",int(sys.argv[3]),sys.argv[4])
+	else:
+		print 
+		print u"请按如下方法使用:"
+		print u"    analyse.py [待分析的文本名] [要输出的文件名] [最小词频] [最大词频]"
+		print u"    如果不要求有最大词频，那么将其设置为 $ "
+		print 
+		print u"黑名单文件默认为 black_word.txt,该文件必须存在，不需要设置黑名单的话置其内容为空即可"
+		print u"若需设置黑名单,则每行为一个单词，出现在黑名单中的单词将不会出现在最终结果中"
 
 if __name__ == "__main__":
 	main()

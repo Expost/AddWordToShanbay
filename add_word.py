@@ -135,11 +135,11 @@ def main():
 	auto_addunit = j["autoaddunit"]
 	unit_name = j["unitname"]
 
-	if (sys.argv) > 1:
-		a = AddShanbayWord(username,password,book_url,[],sys.argv[1],"analyse_result.txt")
+	if len(sys.argv) > 2:
+		a = AddShanbayWord(username,password,book_url,[],sys.argv[1],sys.argv[2])
 		a.start_add()
-	elif auto_addunit:
-		a = AddShanbayWord(username,password,book_url,unit_name,"","analyse_result.txt")
+	elif auto_addunit and len(sys.argv) > 1:
+		a = AddShanbayWord(username,password,book_url,unit_name,"",sys.argv[1])
 		a.start_add()
 	else:
 		print "需要指定配置文件autoaddunit参数，否则使用命令行指定单词书某一单元的链接地址"
