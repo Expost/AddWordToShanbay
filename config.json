@@ -1,0 +1,16 @@
+/*
+	username: 用户名
+	password: 用户密码
+	bookurl:所添加的单词书的链接地址
+	autoaddunit:是否自动添加单词书单元，因为每个单元最多只能添加200个单词，所以建议开启。
+	unitname:如果开启自动添加单元，那么这里就是用户自定义的单元名称，如果自定义的单元名称
+			用完而单词还未添加完，程序会自动停止。如果不填写该内容，程序会自动从1开始作为第一个
+			单元名，之后是2，以此类推。
+*/
+{
+	"username":"381595626@qq.com",
+	"password":"l1d2h3",
+	"bookurl":"https://www.shanbay.com/wordbook/153367/",
+	"autoaddunit":true,
+	"unitname":[]
+}
